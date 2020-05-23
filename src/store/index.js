@@ -1,4 +1,4 @@
-// applyMiddleware é para o saga
+// applyMiddleware e compose são para o saga
 import { createStore, applyMiddleware, compose } from 'redux';
 
 // Essa é para o saga
@@ -15,20 +15,20 @@ const sagaMonitor =
     ? console.tron.createSagaMonitor()
     : null;
 
-/* Sem Saga. Só com Redux!!!
+/* Com Saga, mas só com Redux no Reactotron!!!
 const sagaMiddleware = createSagaMiddleware();
 */
-// Com Saga
+// Com Saga no Reactotron
 const sagaMiddleware = createSagaMiddleware({
   sagaMonitor,
 });
 
-/* Sem Saga. Só com Redux!!!
+/* Para o Reactotron. Sem Saga. Só com Redux!!!
 const enhancer =
   process.env.NODE_ENV === 'development' ? console.tron.createEnhancer() : null;
 */
 
-// Com saga
+// Reactotron com saga
 const enhancer =
   process.env.NODE_ENV === 'development'
     ? compose(console.tron.createEnhancer(), applyMiddleware(sagaMiddleware))
